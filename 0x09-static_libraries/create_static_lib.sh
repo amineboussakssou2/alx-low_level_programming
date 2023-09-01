@@ -1,5 +1,2 @@
-vi create_static_lib.sh
 #!/bin/bash
-gcc -Wall -pedantic -Werror -Wextra -c *.c
-ar -rc  liball.a *.o
-ranlib liball.o
+gcc -c -Wall -Wextra *.c && ar -rcs liball.a *.o
