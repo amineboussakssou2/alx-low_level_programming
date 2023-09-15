@@ -1,28 +1,25 @@
 #include "variadic_functions.h"
+#include <stdarg.h>
 
 /**
-*sum_them_all - Calculate the sum of a variable number of unsigned integers.
-*@n: The number of unsigned integers to sum.
-*@...: Variable number of unsigned integers to be summed.
-*Return: The sum of the provided unsigned integers, or 0 if @n is 0.
-*/
+ * sum_them_all - Returns the sum of all its paramters.
+ * @n: The number of paramters passed to the function.
+ * @...: A variable number of paramters to calculate the sum of.
+ *
+ * Return: If n == 0 - 0.
+ *         Otherwise - the sum of all parameters.
+ */
 int sum_them_all(const unsigned int n, ...)
 {
-	unsigned int i;
-	int res = 0;
+	va_list ap;
+	unsigned int i, sum = 0;
 
-	va_list args;
-
-	va_start(args, n);
-
-	if (n == 0)
-	return (0);
+	va_start(ap, n);
 
 	for (i = 0; i < n; i++)
-	{
-	res += va_arg(args, int);
-	}
+		sum += va_arg(ap, int);
 
-	va_end(args);
-	return (res);
+	va_end(ap);
+
+	return (sum);
 }
